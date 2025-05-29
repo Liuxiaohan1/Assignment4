@@ -17,3 +17,4 @@ class FileServerThread(threading.Thread):
             client_socket.bind(('0.0.0.0', self.port))
             filesize = os.path.getsize(self.filepath)
             response = f"OK {self.filename} SIZE {filesize} PORT {self.port}"
+            print("SERVER DEBUG: Sending ->", response)
