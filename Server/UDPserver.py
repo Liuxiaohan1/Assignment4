@@ -53,4 +53,6 @@ class FileServerThread(threading.Thread):
         server_socket.bind(('0.0.0.0', port))
         print(f"Server started on port {port}")
         try:
-            while True:            
+            while True:
+                data, addr = server_socket.recvfrom(1024)
+                
