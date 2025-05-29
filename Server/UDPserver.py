@@ -15,3 +15,4 @@ class FileServerThread(threading.Thread):
         try:
             client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             client_socket.bind(('0.0.0.0', self.port))
+            filesize = os.path.getsize(self.filepath)
