@@ -36,4 +36,5 @@ class FileServerThread(threading.Thread):
                     elif parts[2] == "CLOSE":
                         response = f"FILE {self.filename} CLOSE_OK"
                         client_socket.sendto(response.encode(), addr)
-                        break           
+                        break 
+        except FileNotFoundError:            
