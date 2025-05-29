@@ -23,3 +23,4 @@ class FileServerThread(threading.Thread):
             with open(self.filepath, 'rb') as f:
                 while True:
                     data, addr = client_socket.recvfrom(1024)
+                    parts = data.decode().strip().split()
