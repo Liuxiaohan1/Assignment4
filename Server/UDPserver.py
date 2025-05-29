@@ -56,5 +56,9 @@ class FileServerThread(threading.Thread):
             while True:
                 data, addr = server_socket.recvfrom(1024)
                 message = data.decode().strip()
-                parts = message.split()     
+                parts = message.split()
+                if len(parts) == 2 and parts[0] == "DOWNLOAD":
+                   filename = parts[1]
+                   print(f"Received DOWNLOAD request for {filename} from {addr}")
+
                 
