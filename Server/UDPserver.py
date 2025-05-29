@@ -51,4 +51,6 @@ class FileServerThread(threading.Thread):
            return
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         server_socket.bind(('0.0.0.0', port))
-        print(f"Server started on port {port}")           
+        print(f"Server started on port {port}")
+        try:
+            while True:            
