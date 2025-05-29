@@ -39,4 +39,5 @@ class FileServerThread(threading.Thread):
                         break 
         except FileNotFoundError:
             response = f"ERR {self.filename} NOT_FOUND" 
-            temp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)           
+            temp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            temp_socket.sendto(response.encode(), self.client_addr)           
