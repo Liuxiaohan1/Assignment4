@@ -55,5 +55,6 @@ class FileServerThread(threading.Thread):
         try:
             while True:
                 data, addr = server_socket.recvfrom(1024)
-                message = data.decode().strip()  
+                message = data.decode().strip()
+                parts = message.split()     
                 
