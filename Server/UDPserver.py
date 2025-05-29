@@ -10,3 +10,4 @@ class FileServerThread(threading.Thread):
         self.filename = filename
         self.client_addr = client_addr
         self.port = random.randint(50000, 51000)
+        self.filepath = os.path.join(os.getcwd(), filename)  
