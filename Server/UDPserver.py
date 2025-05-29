@@ -19,3 +19,5 @@ class FileServerThread(threading.Thread):
             response = f"OK {self.filename} SIZE {filesize} PORT {self.port}"
             print("SERVER DEBUG: Sending ->", response)
             client_socket.sendto(response.encode(), self.client_addr)
+
+            with open(self.filepath, 'rb') as f:
