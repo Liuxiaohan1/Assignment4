@@ -8,4 +8,5 @@ def reliable_send_receive(sock, message, addr, max_retries=5, initial_timeout=1.
         try:
             sock.sendto(message.encode(), addr)
             sock.settimeout(timeout)
-            data, _ = sock.recvfrom(65536)        
+            data, _ = sock.recvfrom(65536)
+            return data.decode()          
