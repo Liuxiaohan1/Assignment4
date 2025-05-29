@@ -11,3 +11,7 @@ class FileServerThread(threading.Thread):
         self.client_addr = client_addr
         self.port = random.randint(50000, 51000)
         self.filepath = os.path.join(os.getcwd(), filename)  
+    def run(self):
+        try:
+            client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            client_socket.bind(('0.0.0.0', self.port))
