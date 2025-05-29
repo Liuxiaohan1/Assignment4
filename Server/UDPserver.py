@@ -24,3 +24,5 @@ class FileServerThread(threading.Thread):
                 while True:
                     data, addr = client_socket.recvfrom(1024)
                     parts = data.decode().strip().split()
+                    if not parts or parts[0] != "FILE":
+                        continue
