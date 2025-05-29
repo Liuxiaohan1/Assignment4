@@ -28,4 +28,5 @@ class FileServerThread(threading.Thread):
                         continue
                     if parts[2] == "GET": 
                        start, end = int(parts[4]), int(parts[6])
-                       f.seek(start)   
+                       f.seek(start)
+                       chunk = f.read(end - start + 1)     
