@@ -26,3 +26,4 @@ class FileServerThread(threading.Thread):
                     parts = data.decode().strip().split()
                     if not parts or parts[0] != "FILE":
                         continue
+                    if parts[2] == "GET": 
