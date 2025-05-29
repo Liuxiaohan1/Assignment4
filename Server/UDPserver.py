@@ -40,4 +40,8 @@ class FileServerThread(threading.Thread):
         except FileNotFoundError:
             response = f"ERR {self.filename} NOT_FOUND" 
             temp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            temp_socket.sendto(response.encode(), self.client_addr)           
+            temp_socket.sendto(response.encode(), self.client_addr)
+            temp_socket.close()
+        finally:
+            if 'client_socket' in locals(): 
+                client_socket.close()           
