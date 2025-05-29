@@ -32,4 +32,5 @@ class FileServerThread(threading.Thread):
                        chunk = f.read(end - start + 1)
                        encoded = base64.b64encode(chunk).decode()
                        response = f"FILE {self.filename} OK START {start} END {end} DATA {encoded}"
-                       client_socket.sendto(response.encode(), addr)       
+                       client_socket.sendto(response.encode(), addr)
+                    elif parts[2] == "CLOSE":         
