@@ -62,6 +62,10 @@ class FileServerThread(threading.Thread):
                    print(f"Received DOWNLOAD request for {filename} from {addr}")
                    FileServerThread(filename, addr, port).start()
         finally:
-            server_socket.close()  
+            server_socket.close()
+
+    if __name__ == "__main__":
+        import sys
+        if len(sys.argv) != 2:    
 
                 
