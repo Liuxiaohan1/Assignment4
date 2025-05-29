@@ -29,4 +29,5 @@ class FileServerThread(threading.Thread):
                     if parts[2] == "GET": 
                        start, end = int(parts[4]), int(parts[6])
                        f.seek(start)
-                       chunk = f.read(end - start + 1)     
+                       chunk = f.read(end - start + 1)
+                       encoded = base64.b64encode(chunk).decode()       
