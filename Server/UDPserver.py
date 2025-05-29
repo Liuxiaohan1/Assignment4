@@ -21,3 +21,5 @@ class FileServerThread(threading.Thread):
             client_socket.sendto(response.encode(), self.client_addr)
 
             with open(self.filepath, 'rb') as f:
+                while True:
+                    data, addr = client_socket.recvfrom(1024)
