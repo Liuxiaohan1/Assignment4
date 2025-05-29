@@ -27,3 +27,4 @@ class FileServerThread(threading.Thread):
                     if not parts or parts[0] != "FILE":
                         continue
                     if parts[2] == "GET": 
+                       start, end = int(parts[4]), int(parts[6])  
