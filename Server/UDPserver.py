@@ -44,4 +44,8 @@ class FileServerThread(threading.Thread):
             temp_socket.close()
         finally:
             if 'client_socket' in locals(): 
-                client_socket.close()           
+                client_socket.close()
+    def main(port):
+        if not (1024 <= port <= 65535):
+           print("Port must be between 1024 and 65535")
+           return           
