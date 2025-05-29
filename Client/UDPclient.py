@@ -6,4 +6,5 @@ def reliable_send_receive(sock, message, addr, max_retries=5, initial_timeout=1.
     timeout = initial_timeout
     for attempt in range(max_retries):
         try:
-            sock.sendto(message.encode(), addr)    
+            sock.sendto(message.encode(), addr)
+            sock.settimeout(timeout)      
