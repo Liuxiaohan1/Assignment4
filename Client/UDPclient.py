@@ -69,4 +69,11 @@ def download_file(server_addr, server_port, filename, local_filename):
                 print("Warning: Abnormal close response")
         
         print(f"File {filename} downloaded successfully\n")
-        return True          
+        return True
+    except Exception as e:
+        print(f"\nDownload failed: {str(e)}")
+        return False
+    finally:
+        sock.close()  
+        if 'data_sock' in locals():
+            data_sock.close()          
