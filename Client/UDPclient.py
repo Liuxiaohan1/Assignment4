@@ -50,4 +50,9 @@ def download_file(server_addr, server_port, filename, local_filename):
                 resp_parts = response.split()
                 data_start = int(resp_parts[4])
                 data_end = int(resp_parts[6])
-                encoded_data = ' '.join(resp_parts[8:])           
+                encoded_data = ' '.join(resp_parts[8:])
+                chunk = base64.b64decode(encoded_data.encode())
+
+                f.seek(data_start)
+                f.write(chunk)
+                bytes_received += len(chunk)           
