@@ -37,4 +37,8 @@ def download_file(server_addr, server_port, filename, local_filename):
         data_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         with open(local_filename, 'wb') as f:
             bytes_received = 0
-            block_size = 1000       
+            block_size = 1000
+            stars_printed = 0
+            while bytes_received < filesize:
+                start = bytes_received
+                end = min(start + block_size - 1, filesize - 1)        
