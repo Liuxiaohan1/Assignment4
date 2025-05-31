@@ -62,4 +62,5 @@ def download_file(server_addr, server_port, filename, local_filename):
                 if new_stars > stars_printed:
                     print(f"\rProgress: {bytes_received}/{filesize} bytes [{'*' * new_stars}]", 
                           end='', flush=True)
-                    stars_printed = new_stars           
+                    stars_printed = new_stars 
+                    print(f"\rProgress: {bytes_received}/{filesize} bytes [{'*' * 10}]")          
