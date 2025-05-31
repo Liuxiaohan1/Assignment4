@@ -41,4 +41,6 @@ def download_file(server_addr, server_port, filename, local_filename):
             stars_printed = 0
             while bytes_received < filesize:
                 start = bytes_received
-                end = min(start + block_size - 1, filesize - 1)        
+                end = min(start + block_size - 1, filesize - 1)
+                request = f"FILE {filename} GET START {start} END {end}"
+                response = reliable_send_receive(data_sock, request, (server_addr, port))        
