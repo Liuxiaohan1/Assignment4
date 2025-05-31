@@ -25,4 +25,7 @@ def download_file(server_addr, server_port, filename, local_filename):
             return False
         if parts[0] != "OK" or parts[2] != "SIZE" or parts[4] != "PORT":
             print("Error: Missing protocol keywords (expected OK/SIZE/PORT)")
-            return False   
+            return False
+        try:
+            filesize = int(parts[3])  
+            port = int(parts[5])     
