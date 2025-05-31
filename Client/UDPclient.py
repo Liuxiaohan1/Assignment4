@@ -46,4 +46,7 @@ def download_file(server_addr, server_port, filename, local_filename):
                 response = reliable_send_receive(data_sock, request, (server_addr, port))
                 if not response.startswith("FILE") or "OK" not in response:
                     print(f"\nError: Invalid data response: {response}")
-                    return False        
+                    return False
+                resp_parts = response.split()
+                data_start = int(resp_parts[4])
+                data_end = int(resp_parts[6])        
