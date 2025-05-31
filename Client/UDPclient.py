@@ -63,4 +63,10 @@ def download_file(server_addr, server_port, filename, local_filename):
                     print(f"\rProgress: {bytes_received}/{filesize} bytes [{'*' * new_stars}]", 
                           end='', flush=True)
                     stars_printed = new_stars 
-                    print(f"\rProgress: {bytes_received}/{filesize} bytes [{'*' * 10}]")          
+                    print(f"\rProgress: {bytes_received}/{filesize} bytes [{'*' * 10}]")
+                    close_resp = reliable_send_receive(data_sock, f"FILE {filename} CLOSE", (server_addr, port))
+            if not close_resp.startswith("FILE") or "CLOSE_OK" not in close_resp:
+                print("Warning: Abnormal close response")
+        
+        print(f"File {filename} downloaded successfully\n")
+        return True          
