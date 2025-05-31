@@ -45,7 +45,7 @@ class FileServerThread(threading.Thread):
         finally:
             if 'client_socket' in locals(): 
                 client_socket.close()
-    def main(port):
+def main(port):
         if not (1024 <= port <= 65535):
            print("Port must be between 1024 and 65535")
            return
@@ -64,10 +64,10 @@ class FileServerThread(threading.Thread):
         finally:
             server_socket.close()
 
-    if __name__ == "__main__":
-        import sys
-        if len(sys.argv) != 2:
-            print("Usage: python UDPserver.py <port>")
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) != 2:
+        print("Usage: python UDPserver.py <port>")
         sys.exit(1)
     main(int(sys.argv[1]))     
 
