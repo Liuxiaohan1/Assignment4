@@ -22,4 +22,7 @@ def download_file(server_addr, server_port, filename, local_filename):
         parts = response.strip().split()
         if len(parts) != 6:  
             print(f"Error: Response needs 6 fields, got {len(parts)} -> {parts}")
-            return False  
+            return False
+        if parts[0] != "OK" or parts[2] != "SIZE" or parts[4] != "PORT":
+            print("Error: Missing protocol keywords (expected OK/SIZE/PORT)")
+            return False   
