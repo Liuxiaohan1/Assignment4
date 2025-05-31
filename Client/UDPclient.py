@@ -49,4 +49,5 @@ def download_file(server_addr, server_port, filename, local_filename):
                     return False
                 resp_parts = response.split()
                 data_start = int(resp_parts[4])
-                data_end = int(resp_parts[6])        
+                data_end = int(resp_parts[6])
+                encoded_data = ' '.join(resp_parts[8:])           
