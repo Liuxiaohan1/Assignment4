@@ -32,4 +32,6 @@ def download_file(server_addr, server_port, filename, local_filename):
         except ValueError:
             print(f"Error: Invalid filesize({parts[3]}) or port({parts[5]})")
             return False       
-        print(f"Downloading {filename} ({filesize} bytes)")     
+        print(f"Downloading {filename} ({filesize} bytes)")
+        
+        data_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)     
