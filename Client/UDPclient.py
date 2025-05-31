@@ -83,5 +83,10 @@ def main(server_addr, server_port, filelist):
             filenames = [line.strip() for line in f if line.strip()]
     except IOError:
         print(f"Could not open file list: {filelist}")
-        return          
+        return
+
+    for filename in filenames:
+        local_filename = os.path.basename(filename)  # Get filename without path
+        download_file(server_addr, server_port, filename, local_filename)
+          
 
