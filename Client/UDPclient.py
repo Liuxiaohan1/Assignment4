@@ -55,4 +55,11 @@ def download_file(server_addr, server_port, filename, local_filename):
 
                 f.seek(data_start)
                 f.write(chunk)
-                bytes_received += len(chunk)           
+                bytes_received += len(chunk)
+
+                progress = bytes_received / filesize
+                new_stars = int(progress * 10)
+                if new_stars > stars_printed:
+                    print(f"\rProgress: {bytes_received}/{filesize} bytes [{'*' * new_stars}]", 
+                          end='', flush=True)
+                    stars_printed = new_stars           
