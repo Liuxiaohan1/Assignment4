@@ -34,4 +34,5 @@ def download_file(server_addr, server_port, filename, local_filename):
             return False       
         print(f"Downloading {filename} ({filesize} bytes)")
         
-        data_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)     
+        data_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        with open(local_filename, 'wb') as f:      
