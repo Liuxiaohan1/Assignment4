@@ -76,4 +76,12 @@ def download_file(server_addr, server_port, filename, local_filename):
     finally:
         sock.close()  
         if 'data_sock' in locals():
-            data_sock.close()          
+            data_sock.close()
+def main(server_addr, server_port, filelist):
+    try:
+        with open(filelist, 'r') as f:
+            filenames = [line.strip() for line in f if line.strip()]
+    except IOError:
+        print(f"Could not open file list: {filelist}")
+        return          
+
