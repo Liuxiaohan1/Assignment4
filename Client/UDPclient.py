@@ -43,4 +43,7 @@ def download_file(server_addr, server_port, filename, local_filename):
                 start = bytes_received
                 end = min(start + block_size - 1, filesize - 1)
                 request = f"FILE {filename} GET START {start} END {end}"
-                response = reliable_send_receive(data_sock, request, (server_addr, port))        
+                response = reliable_send_receive(data_sock, request, (server_addr, port))
+                if not response.startswith("FILE") or "OK" not in response:
+                    print(f"\nError: Invalid data response: {response}")
+                    return False        
