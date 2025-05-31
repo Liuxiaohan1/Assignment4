@@ -86,7 +86,14 @@ def main(server_addr, server_port, filelist):
         return
 
     for filename in filenames:
-        local_filename = os.path.basename(filename)  # Get filename without path
+        local_filename = os.path.basename(filename)  
         download_file(server_addr, server_port, filename, local_filename)
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) != 4:
+        print("Usage: python UDPclient.py <hostname> <port> <filelist>")
+        sys.exit(1)
+    main(sys.argv[1], int(sys.argv[2]), sys.argv[3])
           
 
