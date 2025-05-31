@@ -18,4 +18,8 @@ def download_file(server_addr, server_port, filename, local_filename):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
         response = reliable_send_receive(sock, f"DOWNLOAD {filename}", (server_addr, server_port))
-        print("CLIENT DEBUG: Received ->", response)  
+        print("CLIENT DEBUG: Received ->", response)
+        parts = response.strip().split()
+        if len(parts) != 6:  
+            print(f"Error: Response needs 6 fields, got {len(parts)} -> {parts}")
+            return False  
